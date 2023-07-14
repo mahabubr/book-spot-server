@@ -34,7 +34,25 @@ const postBook = async (req: Request, res: Response) => {
     }
 }
 
+const updateBook = async (req: Request, res: Response) => {
+    try {
+        const {id} = req.params
+    const {...updateData} = req.body
+
+    const result = await BookServices.updateBook(id, updateData)
+
+    res.status(200).send({
+        message: "Book Updated",
+        data: result
+    })
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
 export const BookController = {
     getAllBooks,
-    postBook
+    postBook,
+    updateBook
 }
