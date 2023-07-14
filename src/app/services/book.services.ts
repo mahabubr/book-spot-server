@@ -38,7 +38,13 @@ const postBook = async (payload: IBooks) => {
     return result
 }
 
+const updateBook = async (id: string, payload: Partial<IBooks>) => {
+    const result = await Books.findByIdAndUpdate(id, payload, {new: true})
+    return result
+}
+
 export const BookServices = {
     getAllBooks,
-    postBook
+    postBook,
+    updateBook
 }
