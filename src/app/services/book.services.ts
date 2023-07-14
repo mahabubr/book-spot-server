@@ -1,4 +1,5 @@
 import { bookSearchFields } from "../constants/book.constants"
+import { IBooks } from "../interface/book.interface."
 import { Books } from "../model/book.model"
 
 const getAllBooks = async (filters: {searchTerm?:string}) => {
@@ -32,6 +33,12 @@ const getAllBooks = async (filters: {searchTerm?:string}) => {
     return result
 }
 
+const postBook = async (payload: IBooks) => {
+    const result = await Books.create(payload)
+    return result
+}
+
 export const BookServices = {
-    getAllBooks
+    getAllBooks,
+    postBook
 }
