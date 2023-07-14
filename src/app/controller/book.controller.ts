@@ -14,8 +14,10 @@ const getAllBooks = async (req: Request, res: Response) => {
             message: "Get All Book",
             data: result
         })
-    } catch (error) {
-        console.log(error);
+    }  catch (error: any) {
+        res.status(400).send({
+            message: error.message
+        })
     }
 }
 
@@ -29,8 +31,10 @@ const postBook = async (req: Request, res: Response) => {
             message: "Book Created",
             data: result
         })
-    } catch (error) {
-        console.log(error);
+    }  catch (error: any) {
+        res.status(400).send({
+            message: error.message
+        })
     }
 }
 
@@ -45,8 +49,10 @@ const updateBook = async (req: Request, res: Response) => {
             message: "Book Updated",
             data: result
         })
-    } catch (error) {
-        console.log(error);
+    }  catch (error: any) {
+        res.status(400).send({
+            message: error.message
+        })
     }
 
 }
@@ -62,8 +68,10 @@ const deleteBook = async (req: Request, res: Response) => {
             data: result
         })
 
-    } catch (error) {
-        console.log(error);
+    } catch (error: any) {
+        res.status(400).send({
+            message: error.message
+        })
     }
 }
 
