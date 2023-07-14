@@ -1,6 +1,6 @@
 import { Model } from "mongoose"
 
-interface IBooks {
+export interface IBooks {
     title: string
     author: string
     genre: string
