@@ -43,8 +43,14 @@ const updateBook = async (id: string, payload: Partial<IBooks>) => {
     return result
 }
 
+const deleteBook = async (id: string) => {
+    const result = await Books.findByIdAndDelete(id)
+    return result
+}
+
 export const BookServices = {
     getAllBooks,
     postBook,
-    updateBook
+    updateBook,
+    deleteBook
 }
