@@ -7,6 +7,8 @@ const bookSchema = new Schema<IBooks>({
     genre: {type: String, required: true},
     publication_date: {type: String, required: true},
     reviews: {type: []},
+},{
+    timestamps: true
 })
 
 export const Books = model<IBooks, BooksModel>("Books", bookSchema) 

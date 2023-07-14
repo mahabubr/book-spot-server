@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended: true}))
 
 // Routers
 
-app.use('/api/v1/book', BookRouter)
+app.use('/api/v1/books', BookRouter)
 
 
 app.get('/', async (req: Request, res: Response) => {
