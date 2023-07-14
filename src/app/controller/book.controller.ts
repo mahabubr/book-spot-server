@@ -19,6 +19,22 @@ const getAllBooks = async (req: Request, res: Response) => {
     }
 }
 
+const postBook = async (req: Request, res: Response) => {
+    try {
+        const {...bookData} = req.body
+
+        const result = await BookServices.postBook(bookData)
+
+        res.status(200).send({
+            message: "Book Created",
+            data: result
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export const BookController = {
-    getAllBooks
+    getAllBooks,
+    postBook
 }
