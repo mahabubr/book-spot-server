@@ -89,10 +89,29 @@ const getSingleBook = async (req: Request, res: Response) => {
   }
 };
 
+const updateReview = async (req: Request, res: Response) => {
+  try {
+    const reviewData = req.body.comment;
+    const { id } = req.params;
+
+    const result = await BookServices.updateReview(id, reviewData);
+
+    res.status(200).send({
+      message: "Review Update successful",
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(400).send({
+      message: error.message,
+    });
+  }
+};
+
 export const BookController = {
   getAllBooks,
   postBook,
   updateBook,
   deleteBook,
   getSingleBook,
+  updateReview,
 };

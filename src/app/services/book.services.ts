@@ -53,10 +53,20 @@ const getSingleBook = async (id: string) => {
   return result;
 };
 
+const updateReview = async (id: string, reviewData: string) => {
+  const result = await Books.updateOne(
+    { _id: id },
+    { $push: { reviews: reviewData } }
+  );
+
+  return result;
+};
+
 export const BookServices = {
   getAllBooks,
   postBook,
   updateBook,
   deleteBook,
   getSingleBook,
+  updateReview,
 };
