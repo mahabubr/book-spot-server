@@ -76,7 +76,7 @@ const getSingleBook = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
 
-    const result = await BookServices.getAllBooks(id);
+    const result = await BookServices.getSingleBook(id);
 
     res.status(200).send({
       message: "Get Single Book",
