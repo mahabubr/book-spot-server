@@ -4,80 +4,95 @@ import pick from "../shared/pick";
 import { bookFilterFields } from "../constants/book.constants";
 
 const getAllBooks = async (req: Request, res: Response) => {
-    try {
+  try {
+    const filters = pick(req.query, bookFilterFields);
 
-        const filters = pick(req.query, bookFilterFields)
+    const result = await BookServices.getAllBooks(filters);
 
-        const result = await BookServices.getAllBooks(filters)
-
-        res.status(200).send({
-            message: "Get All Book",
-            data: result
-        })
-    }  catch (error: any) {
-        res.status(400).send({
-            message: error.message
-        })
-    }
-}
+    res.status(200).send({
+      message: "Get All Book",
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(400).send({
+      message: error.message,
+    });
+  }
+};
 
 const postBook = async (req: Request, res: Response) => {
-    try {
-        const {...bookData} = req.body
+  try {
+    const { ...bookData } = req.body;
 
-        const result = await BookServices.postBook(bookData)
+    const result = await BookServices.postBook(bookData);
 
-        res.status(200).send({
-            message: "Book Created",
-            data: result
-        })
-    }  catch (error: any) {
-        res.status(400).send({
-            message: error.message
-        })
-    }
-}
+    res.status(200).send({
+      message: "Book Created",
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(400).send({
+      message: error.message,
+    });
+  }
+};
 
 const updateBook = async (req: Request, res: Response) => {
-    try {
-        const {id} = req.params
-        const {...updateData} = req.body
+  try {
+    const { id } = req.params;
+    const { ...updateData } = req.body;
 
-        const result = await BookServices.updateBook(id, updateData)
+    const result = await BookServices.updateBook(id, updateData);
 
-        res.status(200).send({
-            message: "Book Updated",
-            data: result
-        })
-    }  catch (error: any) {
-        res.status(400).send({
-            message: error.message
-        })
-    }
-
-}
+    res.status(200).send({
+      message: "Book Updated",
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(400).send({
+      message: error.message,
+    });
+  }
+};
 
 const deleteBook = async (req: Request, res: Response) => {
-    try {
-        const {id} = req.params
+  try {
+    const { id } = req.params;
 
-        const result = await BookServices.deleteBook(id)
+    const result = await BookServices.deleteBook(id);
 
-        res.status(200).send({
-            message: "Book Deleted",
-            data: result
-        })
+    res.status(200).send({
+      message: "Book Deleted",
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(400).send({
+      message: error.message,
+    });
+  }
+};
 
-    } catch (error: any) {
-        res.status(400).send({
-            message: error.message
-        })
-    }
-}
+const getSingleBook = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    const result = await BookServices.getAllBooks(id);
+
+    res.status(200).send({
+      message: "Get Single Book",
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(400).send({
+      message: error.message,
+    });
+  }
+};
 
 export const BookController = {
-    getAllBooks,
-    postBook,
-    updateBook,
-    deleteBook
-}
+  getAllBooks,
+  postBook,
+  updateBook,
+  deleteBook,
+  getSingleBook,
+};
