@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 import { IWishlist, WishlistModel } from "../interface/wishlist.interface";
 
-const wishlistSchema = new Schema<IWishlist>(
+const bookmarkSchema = new Schema<IWishlist>(
   {
     title: { type: String, required: true },
     author: { type: String, required: true },
@@ -16,7 +16,7 @@ const wishlistSchema = new Schema<IWishlist>(
   }
 );
 
-export const Wishlist = model<IWishlist, WishlistModel>(
-  "Wishlist",
-  wishlistSchema
+export const Bookmark = model<IWishlist, WishlistModel>(
+  "Bookmark",
+  bookmarkSchema
 );

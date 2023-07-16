@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { BookRouter } from "./app/routes/books.route";
 import { WishlistRouter } from "./app/routes/wishlist.route";
+import { BookmarkRouter } from "./app/routes/bookmark.route";
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/books", BookRouter);
 app.use("/api/v1/wishlist", WishlistRouter);
+app.use("/api/v1/bookmark", BookmarkRouter);
 
 app.get("/", async (req: Request, res: Response) => {
   res.status(200).send("Server Running");
